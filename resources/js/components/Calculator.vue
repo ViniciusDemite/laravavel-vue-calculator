@@ -6,12 +6,13 @@
       id="formula"
       placeholder="Digite sua fórmula aqui"
       class="form-control text-center mb-3"
+      :value="expression"
       @change="formula($event.target.value)"
     />
 
     <p class="mb-0 calculator__result">
         <strong>Resultado:</strong>
-        <span v-if="result > 0">
+        <span v-if="result > 0" class="p-1">
         {{ result }}
         </span>
     </p>
@@ -22,9 +23,9 @@
 
         <ul class="calculator__history">
             <li
-                v-for="calculation in history"
-                :key="calculation.key"
-                @click="retriveHistory(calculation.key)"
+                v-for="(calculation, index) in history"
+                :key="index"
+                @click="retriveHistory(index)"
                 class="p-2"
             >
                 {{ calculation.formula }} = {{ calculation.result }}
@@ -46,19 +47,20 @@ export default {
     history: {
         type: Array,
         require: true,
-    }
+    },
+    expression: {
+      type: String,
+      require: true,
+    },
   },
 
   methods: {
     formula(value) {
       this.$emit('input', value)
     },
-    retriveHistory() {
-        this.$emit('retriveHistory')
+    retriveHistory(value) {
+        this.$emit('retriveHistory', value)
     }
   },
 };
 </script>
-
-<style>
-</style>

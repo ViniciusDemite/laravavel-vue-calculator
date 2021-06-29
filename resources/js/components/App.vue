@@ -12,6 +12,7 @@
                             v-model="formula"
                             :result="result"
                             :history="history"
+                            :expression="formula"
                             @retriveHistory="addResultToFormula"
                         >
                         </calculator-component>
@@ -40,7 +41,7 @@
         
         methods: {
             calculate(formula) {
-                this.result = math.evaluate(formula)
+                this.result = math.round(math.evaluate(formula), 4)
                 this.addToHisotry(formula, this.result)
             },
             addToHisotry(formula, result) {
@@ -51,14 +52,11 @@
 
                 this.history.push(obj)
             },
-            addResultToFormula(key) {
-                console.log(key)
+            addResultToFormula(index) {
+                const oldValue = this.history[index].result.toString()
+
+                this.formula = this.formula.concat(oldValue)
             }
         }
     }
 </script>
-
-<style>
-
-</style>
-Calculator
