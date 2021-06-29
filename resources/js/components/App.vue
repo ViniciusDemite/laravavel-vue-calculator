@@ -8,7 +8,12 @@
                     </div>
 
                     <div class="card-body">
-                        <calculator-component v-model="formula"></calculator-component>
+                        <calculator-component
+                            v-model="formula"
+                            :result="result"
+                            :history="history"
+                        >
+                        </calculator-component>
                     </div>
                 </div>
           </div>
@@ -22,6 +27,7 @@
             return {
                 formula: '',
                 result: 0,
+                history: []
             }
         },
 
@@ -33,7 +39,17 @@
         
         methods: {
             calculate(formula) {
-                console.log(math.evaluate(formula))
+                this.result = math.evaluate(formula)
+                this.addToHisotry(formula, this.result)
+            },
+            addToHisotry(formula, result) {
+                console.log(formula, result)
+                const obj = {
+                    formula: formula,
+                    result: result
+                }
+
+                this.history.push(obj)
             }
         }
     }

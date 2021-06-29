@@ -1,32 +1,58 @@
 <template>
   <div class="calculator">
-      <input type="text" name="formula" id="formula" class="form-control text-center calculator__formula" @change="formula($event.target.value)" />
+    <input
+      type="text"
+      name="formula"
+      id="formula"
+      @change="formula($event.target.value)"
+      class="form-control text-center mb-3"
+    />
 
-      <div class="calculator__result" v-if="result > 0">{{ result }}</div>
+    <p class="mb-0 calculator__result">
+        <strong>Resultado:</strong>
+        <span v-if="result > 0">
+        {{ result }}
+        </span>
+    </p>
+    <div v-if="history.length > 0">
+        <h4 class="text-center mb-3">
+            <strong>Histórico</strong>
+        </h4>
 
-      <div class="calculator__history"></div>
+        <ul class="calculator__history">
+            <li
+                v-for="calculation in history"
+                :key="calculation.key"
+            >
+                {{ calculation.formula }} = {{ calculation.result }}
+            </li>
+        </ul>
+    </div>
   </div>
 </template>
 
 <script>
-    export default {
-        name: 'Calculator',
+export default {
+  name: "Calculator",
 
-        props: {
-            result: {
-                type: Float64Array,
-                require: true,
-            }
-        },
-
-        methods: {
-            formula(value) {
-                this.$emit('input', value)
-            }
-        }
+  props: {
+    result: {
+      type: Number,
+      require: true,
+    },
+    history: {
+        type: Array,
+        require: true,
     }
+  },
+
+  methods: {
+    formula(value) {
+      this.$emit("input", value);
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>
