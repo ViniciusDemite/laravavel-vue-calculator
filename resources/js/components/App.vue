@@ -12,6 +12,7 @@
                             v-model="formula"
                             :result="result"
                             :history="history"
+                            @retriveHistory="addResultToFormula"
                         >
                         </calculator-component>
                     </div>
@@ -43,13 +44,15 @@
                 this.addToHisotry(formula, this.result)
             },
             addToHisotry(formula, result) {
-                console.log(formula, result)
                 const obj = {
                     formula: formula,
                     result: result
                 }
 
                 this.history.push(obj)
+            },
+            addResultToFormula(key) {
+                console.log(key)
             }
         }
     }

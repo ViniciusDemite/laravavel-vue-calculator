@@ -10042,3 +10042,11 @@ body, html, #app {
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
+.calculator__history li {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.calculator__history li:hover {
+  background-color: #d9d9d9;
+  border-radius: 5px;
+}

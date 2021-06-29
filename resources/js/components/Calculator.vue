@@ -4,8 +4,9 @@
       type="text"
       name="formula"
       id="formula"
-      @change="formula($event.target.value)"
+      placeholder="Digite sua fórmula aqui"
       class="form-control text-center mb-3"
+      @change="formula($event.target.value)"
     />
 
     <p class="mb-0 calculator__result">
@@ -23,6 +24,8 @@
             <li
                 v-for="calculation in history"
                 :key="calculation.key"
+                @click="retriveHistory(calculation.key)"
+                class="p-2"
             >
                 {{ calculation.formula }} = {{ calculation.result }}
             </li>
@@ -48,8 +51,11 @@ export default {
 
   methods: {
     formula(value) {
-      this.$emit("input", value);
+      this.$emit('input', value)
     },
+    retriveHistory() {
+        this.$emit('retriveHistory')
+    }
   },
 };
 </script>
