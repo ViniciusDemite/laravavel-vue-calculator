@@ -18,6 +18,6 @@ Após esses passos é só acessar a URL que será fornecida no terminal após ex
 Tecnologias utilizadas nesse projeto:
 
 - **[Laravel](https://laravel.com/docs/8.x)**
-- **[Vue](hhttps://br.vuejs.org/v2/guide/installation.html)**
+- **[Vue.js](https://br.vuejs.org/v2/guide/installation.html)**
 - **[mathjs](https://mathjs.org/docs/getting_started.html)**
 - **[Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)**
