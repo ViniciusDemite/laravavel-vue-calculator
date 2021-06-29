@@ -4,7 +4,7 @@
           <div class="col-12">
               <div class="card">
                     <div class="card-header text-center">
-                        <h3>Calculator</h3>
+                        <h3>Calculadora</h3>
                     </div>
 
                     <div class="card-body">
